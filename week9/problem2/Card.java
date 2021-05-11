@@ -1,36 +1,22 @@
 public class Card {
+    private Rank rank;
     private Suit suit;
-    private int rank;
 
-    public Card(Suit suit, int rank) {
-        this.suit = suit;
+    public Card(Rank rank, Suit suit) {
         this.rank = rank;
+        this.suit = suit;
+    }
+
+    public Rank getRank() {
+        return rank;
     }
 
     public Suit getSuit() {
         return suit;
     }
 
-    public int getRank() {
-        return rank;
-    }
-
-    public boolean suitEquals(Card card) {
-        if (card.getSuit() == this.suit) {
-            return true;
-        }
-        return false;
-    }
-
-    public boolean rankEquals(Card card) {
-        if (card.getRank() == this.rank) {
-            return true;
-        }
-        return false;
-    }
-
     public boolean equals(Card card) {
-        if (suitEquals(card) && rankEquals(card)) {
+        if (this.rank.equals(card.getRank()) && this.suit.equals(card.getSuit())) {
             return true;
         }
         return false;
@@ -38,6 +24,6 @@ public class Card {
 
     @Override
     public String toString() {
-        return String.format("%s %d", suit.toString(), rank);
+        return String.format("%s %d", suit.toString(), rank.getRank());
     }
 }

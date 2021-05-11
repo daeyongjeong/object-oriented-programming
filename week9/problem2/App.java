@@ -1,10 +1,7 @@
 import java.util.Scanner;
 
 public class App {
-    public static final String ANSI_GREEN = "\u001B[32m";
-    public static final String ANSI_RESET = "\u001B[0m";
-
-    public static void printLogo() {
+    public static void showLogo() {
         System.out.println();
         System.out.println(" $$$$$$\\                            $$\\  $$$$$$\\                                     ");
         System.out.println(" $$  __$$\\                           $$ |$$  __$$\\                                   ");
@@ -26,15 +23,24 @@ public class App {
         Scanner sc = new Scanner(System.in);
 
         while (true) {
-            printLogo();
+            showLogo();
             System.out.println("Type \"1\" for new game, \"2\" for quit program.");
-            System.out.print(">>> ");
-            input = sc.nextInt();
+
+            while (true) {
+                System.out.print(">>> ");
+                try {
+                    input = sc.nextInt();
+                    break;
+                } catch (Exception e) {
+                    sc = new Scanner(System.in);
+                }
+            }
+
             System.out.println();
 
             switch (input) {
                 case 1:
-                    new CardGame();
+                    new GameController();
                     break;
                 case 2:
                     sc.close();

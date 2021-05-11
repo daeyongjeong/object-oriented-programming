@@ -1,38 +1,25 @@
-import java.util.*;
-
 public class Deck {
-    private LinkedList<Card> deck;
-
-    private static int RANK_LBOUND = 2;
-    private static int RANK_RBOUND = 10;
+    private CardCollection cards = new CardCollection();
 
     public Deck() {
-        deck = generateDeck();
-        shuffle();
-    }
-
-    private LinkedList<Card> generateDeck() {
-        LinkedList<Card> deck = new LinkedList<Card>();
-
-        for (Suit suit : Suit.values()) {
-            for (int rank = RANK_LBOUND; rank <= RANK_RBOUND; rank++) {
-                Card card = new Card(suit, rank);
-                deck.add(card);
+        for (Rank rank : Rank.values()) {
+            for (Suit suit : Suit.values()) {
+                Card card = new Card(rank, suit);
+                cards.add(card);
             }
         }
+        cards.shuffle();
+    }
 
-        return deck;
+    public void add(Card card) {
+        cards.add(card);
     }
 
     public Card draw() {
-        return deck.remove();
+        return cards.removeFirst();
     }
 
     public void shuffle() {
-        Collections.shuffle(deck);
-    }
-
-    public void addLast(Card card) {
-        deck.addLast(card);
+        cards.shuffle();
     }
 }

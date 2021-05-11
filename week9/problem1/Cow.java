@@ -1,5 +1,5 @@
 public class Cow extends Animal {
-    Cow() {
+    public Cow() {
         this.sound = "Hmme~~~";
     }
 }

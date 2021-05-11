@@ -1,5 +1,5 @@
 public class Animal {
-    String sound;
+    protected String sound;
 
     public void bark() {
         System.out.println(sound);
